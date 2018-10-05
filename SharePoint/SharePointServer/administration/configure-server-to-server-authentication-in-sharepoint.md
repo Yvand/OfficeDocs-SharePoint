@@ -28,7 +28,9 @@ When a farm consumes the User Profile service application of a publishing farm, 
 ## Before you begin
 <a name="begin"> </a>
 
-This article requires that you already shared the User Profile service application between a consuming and a publishing farm. If you haven't done so, see [Share service applications across farms in SharePoint Server](/share-service-applications-across-farms) first to share the User Profile service application.
+The procedure in this article requires that you already configured the following:
+- Shared the User Profile service application between a consuming and a publishing farm as documented in [Share service applications across farms in SharePoint Server](/share-service-applications-across-farms).
+- Configured the Subscription Settings and App Management service applications on both publishing and consuming farms as documented in [section "Configure the Subscription Settings and App Management service applications" of this article](https://docs.microsoft.com/en-us/sharepoint/administration/configure-an-environment-for-apps-for-sharepoint#configure-the-subscription-settings-and-app-management-service-applications)
 
 To understand the procedures in this article, you should be familiar with the basic concepts in the following articles:
 
@@ -56,7 +58,7 @@ The following procedure describes how to configure server-to-server authenticati
 2. Register the consuming farm as a trusted issuer:
 
 ```powershell
-New-SPTrustedSecurityTokenIssuer -MetadataEndpoint "https://<ConsumingFarmHostName>/_layouts/<15or16>/metadata/json/1" -Name "<ConsumingFarmFriendlyName>"
+$trustedIssuer = New-SPTrustedSecurityTokenIssuer -MetadataEndpoint "https://<ConsumingFarmHostName>/_layouts/<15or16>/metadata/json/1" -Name "<ConsumingFarmFriendlyName>"
 ```
 
     > [!NOTE]
